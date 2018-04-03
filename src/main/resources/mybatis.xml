@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="mybatis-config.properties"/>
+
+    <!--艺术家-->
+    <context id="yd_order" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- jdbc连接信息 -->
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成vo对象(dto & example) -->
+        <javaModelGenerator targetPackage="${order_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        <!-- 用于定义SQL映射生成器的属性。(xml) -->
+        <sqlMapGenerator targetPackage="${order_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO的类文件以及配置文件 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${order_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yd_order" domainObjectName="OrderDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="order_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+            <columnOverride column="goods_type" javaType="com.sudao.yidao.biz.core.enums.GoodsType"/>
+            <columnOverride column="coupon_or_not" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+            <columnOverride column="payment_type" javaType="com.sudao.yidao.biz.common.order.enums.PaymentType"/>
+            <columnOverride column="order_status" javaType="com.sudao.yidao.biz.common.order.enums.OrderStatus"/>
+        </table>
+
+    </context>
+
+    <!--艺术家-->
+    <!--<context id="yd_artist" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        &lt;!&ndash; jdbc连接信息 &ndash;&gt;
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        &lt;!&ndash; 生成vo对象(dto & example) &ndash;&gt;
+        <javaModelGenerator targetPackage="${content_artist_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        &lt;!&ndash; 用于定义SQL映射生成器的属性。(xml) &ndash;&gt;
+        <sqlMapGenerator targetPackage="${content_artist_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        &lt;!&ndash; 生成DAO的类文件以及配置文件 &ndash;&gt;
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${content_artist_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yd_artist" domainObjectName="ArtistDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="artist_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+            <columnOverride column="enabled" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+        </table>
+
+    </context>-->
+
+    <!--艺术家相册-->
+    <!--<context id="yd_artist_album" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        &lt;!&ndash; jdbc连接信息 &ndash;&gt;
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        &lt;!&ndash; 生成vo对象(dto & example) &ndash;&gt;
+        <javaModelGenerator targetPackage="${content_artist_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        &lt;!&ndash; 用于定义SQL映射生成器的属性。(xml) &ndash;&gt;
+        <sqlMapGenerator targetPackage="${content_artist_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        &lt;!&ndash; 生成DAO的类文件以及配置文件 &ndash;&gt;
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${content_artist_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yd_artist_album" domainObjectName="ArtistAlbumDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="artist_album_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+            <columnOverride column="enabled" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+        </table>
+    </context>-->
+
+    <!--艺术家资料-->
+    <!--<context id="yd_artist_data" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        &lt;!&ndash; jdbc连接信息 &ndash;&gt;
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        &lt;!&ndash; 生成vo对象(dto & example) &ndash;&gt;
+        <javaModelGenerator targetPackage="${content_artist_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        &lt;!&ndash; 用于定义SQL映射生成器的属性。(xml) &ndash;&gt;
+        <sqlMapGenerator targetPackage="${content_artist_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        &lt;!&ndash; 生成DAO的类文件以及配置文件 &ndash;&gt;
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${content_artist_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yd_artist_data" domainObjectName="ArtistDataDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="artist_data_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+            <columnOverride column="enabled" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+            <columnOverride column="charges_or_not" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+            <columnOverride column="type" javaType="com.sudao.yidao.biz.common.content.artist.enums.DataType"/>
+        </table>
+    </context>-->
+
+    <!--线上课程-->
+    <!--<context id="yd_online_course" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        &lt;!&ndash; jdbc连接信息 &ndash;&gt;
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        &lt;!&ndash; 生成vo对象(dto & example) &ndash;&gt;
+        <javaModelGenerator targetPackage="${content_course_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        &lt;!&ndash; 用于定义SQL映射生成器的属性。(xml) &ndash;&gt;
+        <sqlMapGenerator targetPackage="${content_course_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        &lt;!&ndash; 生成DAO的类文件以及配置文件 &ndash;&gt;
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${content_course_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yd_online_course" domainObjectName="OnlineCourseDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="online_course_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+            <columnOverride column="enabled" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+            <columnOverride column="charges_or_not" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+        </table>
+    </context>-->
+
+    <!--线上课程资源-->
+    <!--<context id="yd_online_course_resource" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        &lt;!&ndash; jdbc连接信息 &ndash;&gt;
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        &lt;!&ndash; 生成vo对象(dto & example) &ndash;&gt;
+        <javaModelGenerator targetPackage="${content_course_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        &lt;!&ndash; 用于定义SQL映射生成器的属性。(xml) &ndash;&gt;
+        <sqlMapGenerator targetPackage="${content_course_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        &lt;!&ndash; 生成DAO的类文件以及配置文件 &ndash;&gt;
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${content_course_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yd_online_course_resource" domainObjectName="OnlineCourseResourceDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="online_course_resource_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+            <columnOverride column="enabled" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+            <columnOverride column="free_trail_or_not" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+        </table>
+    </context>-->
+
+    <!--线下活动-->
+    <!--<context id="yd_offline_activity" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        &lt;!&ndash; jdbc连接信息 &ndash;&gt;
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        &lt;!&ndash; 生成vo对象(dto & example) &ndash;&gt;
+        <javaModelGenerator targetPackage="${content_activity_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        &lt;!&ndash; 用于定义SQL映射生成器的属性。(xml) &ndash;&gt;
+        <sqlMapGenerator targetPackage="${content_activity_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        &lt;!&ndash; 生成DAO的类文件以及配置文件 &ndash;&gt;
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${content_activity_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yd_offline_activity" domainObjectName="OfflineActivityDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="offline_activity_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+            <columnOverride column="enabled" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+            <columnOverride column="charges_or_not" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+            <columnOverride column="limit_or_not" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+            <columnOverride column="refund_deadline_or_not" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+        </table>
+    </context>-->
+
+    <!--线下活动关联艺术家列表-->
+    <!--<context id="yd_offline_activity_relate_artist" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        &lt;!&ndash; jdbc连接信息 &ndash;&gt;
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        &lt;!&ndash; 生成vo对象(dto & example) &ndash;&gt;
+        <javaModelGenerator targetPackage="${content_activity_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        &lt;!&ndash; 用于定义SQL映射生成器的属性。(xml) &ndash;&gt;
+        <sqlMapGenerator targetPackage="${content_activity_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        &lt;!&ndash; 生成DAO的类文件以及配置文件 &ndash;&gt;
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${content_activity_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yd_offline_activity_relate_artist" domainObjectName="OfflineActivityRelateArtistDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="offline_activity_relate_artist_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+        </table>
+    </context>-->
+
+    <!--线下活动票源-->
+    <!--<context id="yd_offline_activity_ticket" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        &lt;!&ndash; jdbc连接信息 &ndash;&gt;
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        &lt;!&ndash; 生成vo对象(dto & example) &ndash;&gt;
+        <javaModelGenerator targetPackage="${content_activity_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        &lt;!&ndash; 用于定义SQL映射生成器的属性。(xml) &ndash;&gt;
+        <sqlMapGenerator targetPackage="${content_activity_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        &lt;!&ndash; 生成DAO的类文件以及配置文件 &ndash;&gt;
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${content_activity_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yd_offline_activity_ticket" domainObjectName="OfflineActivityTicketDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="offline_activity_ticket_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+        </table>
+    </context>-->
+
+    <!--才艺秀-->
+    <!--<context id="yd_talent_show" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        &lt;!&ndash; jdbc连接信息 &ndash;&gt;
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        &lt;!&ndash; 生成vo对象(dto & example) &ndash;&gt;
+        <javaModelGenerator targetPackage="${content_talent_show_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        &lt;!&ndash; 用于定义SQL映射生成器的属性。(xml) &ndash;&gt;
+        <sqlMapGenerator targetPackage="${content_talent_show_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        &lt;!&ndash; 生成DAO的类文件以及配置文件 &ndash;&gt;
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${content_talent_show_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yd_talent_show" domainObjectName="TalentShowDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="talent_show_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+            <columnOverride column="enabled" javaType="com.sudao.yidao.biz.core.enums.YesOrNo"/>
+            <columnOverride column="type" javaType="com.sudao.yidao.biz.common.content.talentshow.enums.TalentShowType"/>
+        </table>
+    </context>-->
+
+    <!--分类-->
+    <!--<context id="yd_category" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        &lt;!&ndash; jdbc连接信息 &ndash;&gt;
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        &lt;!&ndash; 生成vo对象(dto & example) &ndash;&gt;
+        <javaModelGenerator targetPackage="${content_category_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        &lt;!&ndash; 用于定义SQL映射生成器的属性。(xml) &ndash;&gt;
+        <sqlMapGenerator targetPackage="${content_category_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        &lt;!&ndash; 生成DAO的类文件以及配置文件 &ndash;&gt;
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${content_category_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yd_category" domainObjectName="CategoryDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="category_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+        </table>
+    </context>-->
+
+    <!--标签-->
+    <!--<context id="yd_label" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        &lt;!&ndash; jdbc连接信息 &ndash;&gt;
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        &lt;!&ndash; 生成vo对象(dto & example) &ndash;&gt;
+        <javaModelGenerator targetPackage="${content_category_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        &lt;!&ndash; 用于定义SQL映射生成器的属性。(xml) &ndash;&gt;
+        <sqlMapGenerator targetPackage="${content_category_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        &lt;!&ndash; 生成DAO的类文件以及配置文件 &ndash;&gt;
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${content_category_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yd_label" domainObjectName="LabelDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="label_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+            <columnOverride column="type" javaType="com.sudao.yidao.biz.common.content.category.enums.LabelType"/>
+        </table>
+    </context>-->
+
+    <!--热词-->
+    <!--<context id="yd_hot_word" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        &lt;!&ndash; jdbc连接信息 &ndash;&gt;
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        &lt;!&ndash; 生成vo对象(dto & example) &ndash;&gt;
+        <javaModelGenerator targetPackage="${content_category_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        &lt;!&ndash; 用于定义SQL映射生成器的属性。(xml) &ndash;&gt;
+        <sqlMapGenerator targetPackage="${content_category_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        &lt;!&ndash; 生成DAO的类文件以及配置文件 &ndash;&gt;
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${content_category_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="yd_hot_word" domainObjectName="HotWordDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="hot_word_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+        </table>
+    </context>-->
+
+    <!-- example don't run
+        不要运行, 这是个 example
+        根据这个修改
+    -->
+    <!--<context id="saleOrderModule" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        &lt;!&ndash; jdbc连接信息 &ndash;&gt;
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        &lt;!&ndash; 生成vo对象(dto & example) &ndash;&gt;
+        <javaModelGenerator targetPackage="${sale_order_base_package}.dao.dto"
+                            targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.kuaicto.framework.mybatis.model.BaseDTO"/>
+        </javaModelGenerator>
+        &lt;!&ndash; 用于定义SQL映射生成器的属性。(xml) &ndash;&gt;
+        <sqlMapGenerator targetPackage="${sale_order_base_package}.dao.mapper"
+                         targetProject="${target_project_path}/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        &lt;!&ndash; 生成DAO的类文件以及配置文件 &ndash;&gt;
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${sale_order_base_package}.dao.mapper"
+                             targetProject="${target_project_path}/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="sale_order" domainObjectName="SaleOrderDTO" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="sale_order_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="deleted" javaType="com.kuaicto.spec.enums.dto.EnumDeleted"/>
+            <columnOverride column="platform_type" javaType="${sale_order_base_package}.enums.EnumPayPlatformType"/>
+            <columnOverride column="sale_order_status" javaType="${sale_order_base_package}.enums.EnumSaleOrderStatus"/>
+        </table>
+
+    </context>-->
+</generatorConfiguration>

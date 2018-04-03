@@ -1,0 +1,80 @@
+target: F://ideaProjects/ydw/yidao-platform/yidao-biz/src/main/java
+items:
+#  -
+#    pkg: com.sudao.yidao.biz.common.content.artist
+#    domain: Artist
+#    primaryKeyField: artistId
+#    uriPath: /artist
+
+#  -
+#    pkg: com.sudao.yidao.biz.common.content.artist
+#    domain: ArtistAlbum
+#    primaryKeyField: artistAlbumId
+#    uriPath: /artist/album
+
+#  -
+#    pkg: com.sudao.yidao.biz.common.content.artist
+#    domain: ArtistData
+#    primaryKeyField: artistDataId
+#    uriPath: /artist/data
+
+#  -
+#    pkg: com.sudao.yidao.biz.common.content.course
+#    domain: OnlineCourse
+#    primaryKeyField: onlineCourseId
+#    uriPath: /course
+
+#  -
+#    pkg: com.sudao.yidao.biz.common.content.course
+#    domain: OnlineCourseResource
+#    primaryKeyField: onlineCourseResourceId
+#    uriPath: /course/resource
+
+#  -
+#    pkg: com.sudao.yidao.biz.common.content.activity
+#    domain: OfflineActivity
+#    primaryKeyField: offlineActivityId
+#    uriPath: /activity
+
+#  -
+#    pkg: com.sudao.yidao.biz.common.content.activity
+#    domain: OfflineActivityRelateArtist
+#    primaryKeyField: offlineActivityRelateArtistId
+#    uriPath: /activity/relateArtist
+
+#  -
+#    pkg: com.sudao.yidao.biz.common.content.activity
+#    domain: OfflineActivityTicket
+#    primaryKeyField: offlineActivityTicketId
+#    uriPath: /activity/ticket
+
+#  -
+#    pkg: com.sudao.yidao.biz.common.content.talentshow
+#    domain: TalentShow
+#    primaryKeyField: talentShowId
+#    uriPath: /talentShow
+
+#  -
+#    pkg: com.sudao.yidao.biz.common.content.category
+#    domain: Category
+#    primaryKeyField: categoryId
+#    uriPath: /category
+
+#  -
+#    pkg: com.sudao.yidao.biz.common.content.category
+#    domain: Label
+#    primaryKeyField: labelId
+#    uriPath: /label
+
+#  -
+#    pkg: com.sudao.yidao.biz.common.content.category
+#    domain: HotWord
+#    primaryKeyField: HotWordId
+#    uriPath: /hotWord
+
+# 订单
+  -
+    pkg: com.sudao.yidao.biz.common.order
+    domain: Order
+    primaryKeyField: orderId
+    uriPath: /order
